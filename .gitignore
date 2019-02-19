@@ -178,3 +178,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+# Avoid ignoring Gradle wrapper jar file
+!gradle-wrapper.jar
