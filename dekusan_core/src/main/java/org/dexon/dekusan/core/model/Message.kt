@@ -7,5 +7,6 @@ import kotlinx.android.parcel.RawValue
 @Parcelize
 data class Message<V>(
     @JvmField val value: @RawValue V,
-    @JvmField val url: String?
+    @JvmField val url: String?,
+    @JvmField val leafPosition: Long?
 ) : Parcelable

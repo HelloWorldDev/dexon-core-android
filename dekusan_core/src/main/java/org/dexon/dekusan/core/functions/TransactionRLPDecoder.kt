@@ -3,7 +3,10 @@ package org.dexon.dekusan.core.functions
 import org.dexon.dekusan.core.model.Address
 import org.dexon.dekusan.core.model.SignatureData
 import org.dexon.dekusan.core.model.Transaction
-import org.kethereum.functions.rlp.*
+import org.kethereum.functions.rlp.RLPElement
+import org.kethereum.functions.rlp.RLPList
+import org.kethereum.functions.rlp.toIntFromRLP
+import org.kethereum.functions.rlp.toUnsignedBigIntegerFromRLP
 import org.walleth.khex.toHexString
 
 fun RLPList.toTransaction(): Transaction? {
@@ -12,31 +15,35 @@ fun RLPList.toTransaction(): Transaction? {
     }
 
     val elements: List<RLPElement> = element.map {
-        it as? RLPElement ?: throw IllegalArgumentException("RLPList to make transaction must consist only of elements - no list ")
+        it as? RLPElement
+            ?: throw IllegalArgumentException("RLPList to make transaction must consist only of elements - no list ")
     }
 
-    return Transaction(chain = null,
-            creationEpochSecond = System.currentTimeMillis(),
-            from = null,
-            nonce = elements[0].toUnsignedBigIntegerFromRLP(),
-            gasPrice = elements[1].toUnsignedBigIntegerFromRLP(),
-            gasLimit = elements[2].toUnsignedBigIntegerFromRLP(),
-            to = Address(elements[3].bytes.toHexString()),
-            value = elements[4].toUnsignedBigIntegerFromRLP(),
-            input = elements[5].bytes.toList(),
-            txHash = null
+    return Transaction(
+        chain = null,
+        creationEpochSecond = System.currentTimeMillis(),
+        from = null,
+        nonce = elements[0].toUnsignedBigIntegerFromRLP(),
+        gasPrice = elements[1].toUnsignedBigIntegerFromRLP(),
+        gasLimit = elements[2].toUnsignedBigIntegerFromRLP(),
+        to = Address(elements[3].bytes.toHexString()),
+        value = elements[4].toUnsignedBigIntegerFromRLP(),
+        input = elements[5].bytes.toList(),
+        txHash = null,
+        leafPosition = null
     )
 }
 
 fun RLPList.toTransactionSignatureData(): SignatureData {
     val elements: List<RLPElement> = element.map {
-        it as? RLPElement ?: throw IllegalArgumentException("RLPList to make transaction must consist only of elements - no list ")
+        it as? RLPElement
+            ?: throw IllegalArgumentException("RLPList to make transaction must consist only of elements - no list ")
     }
 
     return SignatureData(
-            v = elements[6].toIntFromRLP(),
-            r = elements[7].toUnsignedBigIntegerFromRLP(),
-            s = elements[8].toUnsignedBigIntegerFromRLP()
+        v = elements[6].toIntFromRLP(),
+        r = elements[7].toUnsignedBigIntegerFromRLP(),
+        s = elements[8].toUnsignedBigIntegerFromRLP()
     )
 
 }

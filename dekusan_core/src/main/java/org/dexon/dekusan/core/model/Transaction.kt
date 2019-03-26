@@ -17,7 +17,8 @@ data class Transaction(
     var nonce: BigInteger?,
     var to: Address?,
     var txHash: String?,
-    var value: BigInteger
+    var value: BigInteger,
+    val leafPosition: Long?
 ) : Parcelable {
     constructor() : this(
         chain = null,
@@ -29,7 +30,8 @@ data class Transaction(
         nonce = null,
         to = null,
         txHash = null,
-        value = BigInteger.ZERO
+        value = BigInteger.ZERO,
+        leafPosition = 0
     )
 }
 
@@ -37,14 +39,15 @@ data class Transaction(
 fun createTransactionWithDefaults(
     chain: ChainDefinition? = null,
     creationEpochSecond: Long? = null,
-    from: Address,
+    from: Address?,
     gasLimit: BigInteger = DEFAULT_GAS_LIMIT,
     gasPrice: BigInteger = DEFAULT_GAS_PRICE,
     input: List<Byte> = emptyList(),
     nonce: BigInteger? = null,
     to: Address?,
     txHash: String? = null,
-    value: BigInteger
+    value: BigInteger,
+    leafPosition: Long?
 ) = Transaction(
     chain,
     creationEpochSecond,
@@ -55,6 +58,7 @@ fun createTransactionWithDefaults(
     nonce,
     to,
     txHash,
-    value
+    value,
+    leafPosition
 )
 
