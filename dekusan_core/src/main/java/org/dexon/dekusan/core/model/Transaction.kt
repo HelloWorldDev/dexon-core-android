@@ -4,11 +4,12 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import org.kethereum.DEFAULT_GAS_LIMIT
 import org.kethereum.DEFAULT_GAS_PRICE
+import org.kethereum.model.ChainId
 import java.math.BigInteger
 
 @Parcelize
 data class Transaction(
-    var chain: ChainDefinition?,
+    var chain: Long?,
     var creationEpochSecond: Long?,
     var from: Address?,
     var gasLimit: BigInteger,
@@ -37,7 +38,7 @@ data class Transaction(
 
 // we cannot use default values in the data class when we want to use it with room
 fun createTransactionWithDefaults(
-    chain: ChainDefinition? = null,
+    chain: ChainId? = null,
     creationEpochSecond: Long? = null,
     from: Address?,
     gasLimit: BigInteger = DEFAULT_GAS_LIMIT,
@@ -49,7 +50,7 @@ fun createTransactionWithDefaults(
     value: BigInteger,
     leafPosition: Long?
 ) = Transaction(
-    chain,
+    chain?.value,
     creationEpochSecond,
     from,
     gasLimit,
