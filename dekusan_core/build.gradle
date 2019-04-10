@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlinx-serialization'
 
 android {
     compileSdkVersion 28
@@ -16,6 +17,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    kotlinOptions {
+        freeCompilerArgs = ["-XXLanguage:+InlineClasses"]
     }
 }
 
@@ -33,9 +37,12 @@ dependencies {
 
     implementation "com.github.walleth.kethereum:functions:0.68"
     implementation "com.github.walleth.kethereum:wallet:0.68"
-    implementation "com.github.walleth.kethereum:model:0.74.8"
+//    implementation "com.github.walleth.kethereum:model:0.74.8"
     api 'com.github.gnosis.svalinn-kotlin:eip712:v0.7.0'
     api 'com.github.gnosis.svalinn-kotlin:eip712-adapter-moshi:v0.7.0'
+
+    // Kotlinx Serialization
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.10.0"
 }
 repositories {
     mavenCentral()

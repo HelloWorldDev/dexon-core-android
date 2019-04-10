@@ -4,7 +4,6 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 import org.kethereum.DEFAULT_GAS_LIMIT
 import org.kethereum.DEFAULT_GAS_PRICE
-import org.kethereum.model.ChainId
 import java.math.BigInteger
 
 @Parcelize
@@ -62,4 +61,3 @@ fun createTransactionWithDefaults(
     value,
     leafPosition
 )
-

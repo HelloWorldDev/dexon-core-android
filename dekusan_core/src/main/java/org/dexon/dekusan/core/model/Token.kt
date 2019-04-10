@@ -1,7 +1,8 @@
 package org.dexon.dekusan.core.model
 
-import org.kethereum.model.ChainId
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Token(
     val symbol: String,
     val address: Address,
