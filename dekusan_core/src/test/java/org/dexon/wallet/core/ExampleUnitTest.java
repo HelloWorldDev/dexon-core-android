@@ -1,4 +1,4 @@
-package org.dexon.dekusan.core;
+package org.dexon.wallet.core;
 
 import org.junit.Test;
 

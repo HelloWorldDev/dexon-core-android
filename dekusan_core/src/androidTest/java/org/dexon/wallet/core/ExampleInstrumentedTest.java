@@ -1,4 +1,4 @@
-package org.dexon.dekusan.core;
+package org.dexon.wallet.core;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("org.dexon.dekusan.core.test", appContext.getPackageName());
+        assertEquals("org.dexon.wallet.core.test", appContext.getPackageName());
     }
 }

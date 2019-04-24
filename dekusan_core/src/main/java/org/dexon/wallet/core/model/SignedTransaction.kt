@@ -1,4 +1,4 @@
-package org.dexon.dekusan.core.model
+package org.dexon.wallet.core.model
 
 data class SignedTransaction(
     var transaction: Transaction,

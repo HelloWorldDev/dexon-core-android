@@ -1,4 +1,4 @@
-package org.dexon.dekusan.core.model
+package org.dexon.wallet.core.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

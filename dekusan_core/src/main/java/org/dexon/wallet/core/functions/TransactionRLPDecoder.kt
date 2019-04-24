@@ -1,8 +1,8 @@
-package org.dexon.dekusan.core.functions
+package org.dexon.wallet.core.functions
 
-import org.dexon.dekusan.core.model.Address
-import org.dexon.dekusan.core.model.SignatureData
-import org.dexon.dekusan.core.model.Transaction
+import org.dexon.wallet.core.model.Address
+import org.dexon.wallet.core.model.SignatureData
+import org.dexon.wallet.core.model.Transaction
 import org.kethereum.functions.rlp.RLPElement
 import org.kethereum.functions.rlp.RLPList
 import org.kethereum.functions.rlp.toIntFromRLP

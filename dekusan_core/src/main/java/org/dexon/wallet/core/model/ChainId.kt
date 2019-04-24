@@ -1,4 +1,4 @@
-package org.dexon.dekusan.core.model
+package org.dexon.wallet.core.model
 
 import kotlinx.serialization.Serializable
 
